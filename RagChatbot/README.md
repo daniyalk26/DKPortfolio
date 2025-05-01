@@ -23,16 +23,3 @@ reference-backed responses.
 
 ---
 
-## 🏗️ Project Layout
-
-```text
-RagChatbot/
-├── ingest.py         # ETL: load → split → embed → index
-├── api.py            # FastAPI app with /chat route
-├── llm.py            # LLM wrapper + prompt templates
-├── vector_store/     # Serialized FAISS index lives here
-├── ui/               # React front-end (optional)
-├── tests/            # pytest unit tests
-├── Dockerfile
-└── docker-compose.yml
-```
