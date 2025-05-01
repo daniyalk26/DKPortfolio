@@ -1,4 +1,4 @@
-# PawID – Dog Breed & Emotion Classifier 🐾
+# PawID – Dog Breed & Emotion Classifier using EffecientNetB3 Model 🐾
 
 A full‑stack project that recognizes dog breeds and emotions from an image.  
 **Backend:** FastAPI + TensorFlow.  
