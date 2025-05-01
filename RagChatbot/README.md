@@ -1,4 +1,4 @@
-# Retrieval-Augmented Generation Chatbot (RAG-Chatbot) 🤖📚
+# Retrieval-Augmented Generation Chatbot (RAG-Chatbot) with BERT Model🤖📚
 
 **Ask questions → get answers with citations.**  
 This project ingests your unstructured documents, stores semantic embeddings
