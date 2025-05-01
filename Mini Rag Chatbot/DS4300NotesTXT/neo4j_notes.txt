@@ -1,0 +1,30 @@
+
+Neo4j Notes
+
+Neo4j: Graph Database System:
+- Transactional (OLTP) & Analytical (OLAP)
+- Optimized for high-speed traversal, frequent updates
+- Graph Data Science (GDS) plugin for analytics
+
+NoSQL Schema-Optional:
+- Flexible schema evolution
+- Nodes and relationships dynamic, schema changes at runtime
+
+Indexing:
+- Native, Full-Text (Lucene), Manual, Composite, Relationship
+
+ACID Compliance:
+- Atomicity, Consistency, Isolation (READ_COMMITTED), Durability
+- Transaction management with Cypher
+
+Distributed Computing & High Availability:
+- Leader-follower architecture, HA clustering, Apache ZooKeeper coordination
+- Competitors: Amazon Neptune, Microsoft CosmosDB
+
+Cypher Query Language:
+- Pattern Matching, intuitive syntax
+- Examples: Find friends, create nodes/relationships, shortest paths
+
+Plugins:
+- APOC (utilities), GDS (graph algorithms)
+

@@ -1,0 +1,113 @@
+{
+  "AWSTemplateFormatVersion": "2010-09-09",
+  "Description": "Cloud formation template for generating training model for Chatbot version 1",
+  "Parameters": {
+    "clientName": {
+      "Type": "String",
+      "Description": "unique name of a client (for Tag)",
+      "MaxLength": "15",
+      "MinLength": "3"
+    },
+    "env": {
+      "Type": "String",
+      "Description": "Environment (dev,prod)",
+      "AllowedValues": [
+        "dev",
+        "prod"
+      ],
+      "Default": "dev",
+      "MaxLength": "7",
+      "MinLength": "3"
+    },
+    "modelVersion": {
+      "Type": "String",
+      "Description": "versioning for model and their related object",
+      "Default": "24.8.0"
+    },
+    "keyPair": {
+      "Type": "String",
+      "Description": "EC2 Keypair Name",
+      "Default": "tst_cb"
+    },
+    "instanceProfile": {
+      "Type": "String",
+      "Description": "EC2 InstanceProfile Name",
+      "Default": "EC2InstanceWatcher"
+    },
+    "subnetId": {
+      "Type": "String",
+      "Description": "EC2 Private Subnet id",
+      "Default": "subnet-07704df83f0839f0d"
+    }
+  },
+  "Resources": {
+    "ModelGenerationEC2": {
+      "Type": "AWS::EC2::Instance",
+      "Properties": {
+        "SubnetId" : {
+              "Ref": "subnetId"
+            },
+        "LaunchTemplate": {
+          "LaunchTemplateName" : {
+            "Fn::Sub": "${env}-${clientName}-bot-model-generation-template-${AWS::Region}"
+          },
+          "Version": {
+            "Fn::GetAtt": ["ModelGenerationInstanceTemplate", "LatestVersionNumber"]
+          }
+        },
+        "Tags": [
+          {
+            "Key": "Name",
+            "Value": {
+            "Fn::Sub": "${env}-${clientName}-bot-model-generation-instance-${AWS::Region}"
+          }
+          }
+        ]
+      }
+    },
+    "ModelGenerationInstanceTemplate": {
+      "Type" : "AWS::EC2::LaunchTemplate",
+      "Properties" : {
+          "LaunchTemplateData" : {
+             "IamInstanceProfile": {
+               "Name" : {
+              "Ref": "instanceProfile"
+            }
+             },
+             "ImageId" : "ami-00482cb904068a5f6",
+             "InstanceType": "p3.2xlarge",
+             "KeyName": {
+              "Ref": "keyPair"
+            },
+            "SecurityGroupIds": ["sg-00be0baac87dfb9e4"],
+            "UserData": {
+              "Fn::Base64": {
+            "Fn::Join":["", [
+              "#!/bin/bash -ex\n",
+              "export ARTIFACTORY_BUCKET=",
+              {
+                "Fn::Sub": "s3://${env}-pa-artifactory-${AWS::Region}"
+              },
+              "\n",
+              "export MODEL_VERSION=",
+              {
+                "Fn::Sub": "${modelVersion}"
+              },
+              "\n",
+              "LOG_FILE=model_gen.log\n",
+              "export $LOG_FILE",
+              "touch $LOG_FILE \n",
+              "aws s3 cp $ARTIFACTORY_BUCKET/chatbot/$MODEL_VERSION/cf-scripts/userdata.sh .\n",
+              "chmod 755 userdata.sh\n",
+              "source userdata.sh > $LOG_FILE 2>&1\n"
+            ] ]
+          }
+            }
+          },
+          "LaunchTemplateName" : {
+            "Fn::Sub": "${env}-${clientName}-bot-model-generation-template-${AWS::Region}"
+          }
+      }
+    }
+  }
+}

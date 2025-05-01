@@ -1,0 +1,47 @@
+
+Docker and Docker Compose Notes
+
+What is Docker?
+- Docker: Open platform for developing, shipping, running applications.
+- Containers: Lightweight isolated environments, consistent across setups.
+
+Docker Features:
+- Isolation, security, portability.
+- Lifecycle management: Develop, test, deploy.
+
+Use Cases:
+- Rapid, consistent application delivery.
+- Dynamic deployment and scaling.
+- Optimized hardware utilization.
+
+Docker Architecture:
+- Client-server model: Docker Daemon (dockerd), Docker Client, Docker Desktop, Docker Registry.
+- Docker Hub: Default public registry.
+
+Docker Objects:
+- Images: Read-only templates built from Dockerfile.
+- Containers: Runnable instances of images, managed via Docker API or CLI.
+
+Running Containers:
+- Command: docker run -i -t ubuntu /bin/bash
+
+Container vs. VM:
+- Containers: Low overhead, rapid boot, process-level isolation.
+- VMs: High overhead, OS-level isolation.
+
+Publishing Ports:
+- docker run -d -p HOST_PORT:CONTAINER_PORT nginx
+- docker run -P nginx (publishes all ports)
+
+Docker Compose:
+- Simplifies multi-container applications management.
+- YAML configuration for declarative setup (compose.yaml).
+
+Compose Configuration Examples:
+- Application and MySQL services definition.
+- docker compose up -d to run containers in detached mode.
+
+Logs & Management:
+- docker compose logs -f
+- docker compose down (--volumes removes data).
+

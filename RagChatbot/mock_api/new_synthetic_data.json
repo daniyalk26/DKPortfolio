@@ -1,0 +1,362 @@
+{
+    "train": [
+        [
+            "How much money do I have in my savings after the recent deposit?",
+            "balance"
+        ],
+        [
+            "How much money is currently in my checking account?",
+            "balance"
+        ],
+        [
+            "What is the balance of my checking account?",
+            "balance"
+        ],
+        [
+            "Can you tell me my account balance as of yesterday?",
+            "balance"
+        ],
+        [
+            "How much do I have in my joint account?",
+            "balance"
+        ],
+        [
+            "Can you provide me with my account balance details?",
+            "balance"
+        ],
+        [
+            "How much do I have in my joint account?",
+            "balance"
+        ],
+        [
+            "List all transactions from last month.",
+            "transactions"
+        ],
+        [
+            "List all transactions from last month.",
+            "transactions"
+        ],
+        [
+            "Show me the transactions made in the past week.",
+            "transactions"
+        ],
+        [
+            "Show me the transactions made in the past week.",
+            "transactions"
+        ],
+        [
+            "What were my top expenses for this month?",
+            "transactions"
+        ],
+        [
+            "How much did I spend on my credit card?",
+            "transactions"
+        ],
+        [
+            "What were my highest expenses this year?",
+            "transactions"
+        ],
+        [
+            "Transfer $100 to my friend\u2019s account.",
+            "transfer"
+        ],
+        [
+            "Send $200 to my BOA card.",
+            "transfer"
+        ],
+        [
+            "Can you transfer $500 to my savings account?",
+            "transfer"
+        ],
+        [
+            "I need to transfer $300 to my other bank account.",
+            "transfer"
+        ],
+        [
+            "Send $400 to my mortgage account.",
+            "transfer"
+        ],
+        [
+            "Can I transfer $30 to my checking account?",
+            "transfer"
+        ],
+        [
+            "Transfer $100 to my friend\u2019s account.",
+            "transfer"
+        ],
+        [
+            "Can you provide me with the expiry date of my card?",
+            "card"
+        ],
+        [
+            "Can you provide me with the expiry date of my card?",
+            "card"
+        ],
+        [
+            "Is my card ending in 4321 active?",
+            "card"
+        ],
+        [
+            "What is the status of my card delivery?",
+            "card"
+        ],
+        [
+            "What is the status of my replacement card?",
+            "card"
+        ],
+        [
+            "Is my card contactless enabled?",
+            "card"
+        ],
+        [
+            "What is the status of my card delivery?",
+            "card"
+        ],
+        [
+            "What security measures does PayActiv have in place?",
+            "about_payactiv"
+        ],
+        [
+            "How does PayActiv support financial wellness?",
+            "about_payactiv"
+        ],
+        [
+            "What is PayActiv\u2019s mission?",
+            "about_payactiv"
+        ],
+        [
+            "What security measures does PayActiv have in place?",
+            "about_payactiv"
+        ],
+        [
+            "What security measures does PayActiv have in place?",
+            "about_payactiv"
+        ],
+        [
+            "Where can I read more about PayActiv?",
+            "about_payactiv"
+        ],
+        [
+            "How does PayActiv work?",
+            "about_payactiv"
+        ],
+        [
+            "How many continents are there?",
+            "oos"
+        ],
+        [
+            "How many countries are in Africa?",
+            "oos"
+        ],
+        [
+            "What\u2019s the population of New York?",
+            "oos"
+        ],
+        [
+            "Who is the prime minister of India?",
+            "oos"
+        ],
+        [
+            "What is the speed of light?",
+            "oos"
+        ],
+        [
+            "What is the distance between Earth and the Moon?",
+            "oos"
+        ],
+        [
+            "Who won the World Series last year?",
+            "oos"
+        ],
+        [
+            "What\u2019s the weather for the weekend?",
+            "weather"
+        ],
+        [
+            "Is it going to be cold today?",
+            "weather"
+        ],
+        [
+            "What\u2019s the weather like tomorrow?",
+            "weather"
+        ],
+        [
+            "Should I wear a jacket today?",
+            "weather"
+        ],
+        [
+            "How's the weather looking right now?",
+            "weather"
+        ],
+        [
+            "What's the temperature outside?",
+            "weather"
+        ],
+        [
+            "What\u2019s the weather like tomorrow?",
+            "weather"
+        ],
+        [
+            "What\u2019s my latest credit score?",
+            "credit_score"
+        ],
+        [
+            "What\u2019s my credit score as of today?",
+            "credit_score"
+        ],
+        [
+            "What\u2019s my latest credit score?",
+            "credit_score"
+        ],
+        [
+            "Can you tell me if my credit score has changed?",
+            "credit_score"
+        ],
+        [
+            "I need to know my credit score.",
+            "credit_score"
+        ],
+        [
+            "How\u2019s my credit report doing?",
+            "credit_score"
+        ],
+        [
+            "What\u2019s my latest credit score?",
+            "credit_score"
+        ]
+    ],
+    "val": [
+        [
+            "What\u2019s left in my account after the last transaction?",
+            "balance"
+        ],
+        [
+            "How much do I have in savings?",
+            "balance"
+        ],
+        [
+            "What were my top expenses for this month?",
+            "transactions"
+        ],
+        [
+            "How much did I spend at the grocery store last month?",
+            "transactions"
+        ],
+        [
+            "Move $20 to my emergency fund.",
+            "transfer"
+        ],
+        [
+            "Transfer $1000 to my spouse's account.",
+            "transfer"
+        ],
+        [
+            "Can you check if my card ending in 5678 is valid?",
+            "card"
+        ],
+        [
+            "Can you check if my card ending in 5678 is valid?",
+            "card"
+        ],
+        [
+            "Tell me about PayActiv\u2019s services.",
+            "about_payactiv"
+        ],
+        [
+            "Tell me about PayActiv\u2019s services.",
+            "about_payactiv"
+        ],
+        [
+            "How do I bake a chocolate cake?",
+            "oos"
+        ],
+        [
+            "What\u2019s the capital of France?",
+            "oos"
+        ],
+        [
+            "What's the temperature outside?",
+            "weather"
+        ],
+        [
+            "What\u2019s the weather for the weekend?",
+            "weather"
+        ],
+        [
+            "Can you tell me if my credit score has changed?",
+            "credit_score"
+        ],
+        [
+            "How\u2019s my credit report doing?",
+            "credit_score"
+        ]
+    ],
+    "test": [
+        [
+            "What\u2019s my balance after the last withdrawal?",
+            "balance"
+        ],
+        [
+            "How much did I spend at the grocery store last month?",
+            "transactions"
+        ],
+        [
+            "Can you transfer $150 to my brokerage account?",
+            "transfer"
+        ],
+        [
+            "Can you tell me the credit limit of my card?",
+            "card"
+        ],
+        [
+            "What are the core values of PayActiv?",
+            "about_payactiv"
+        ],
+        [
+            "Who won the World Series last year?",
+            "oos"
+        ],
+        [
+            "What's the forecast for today?",
+            "weather"
+        ],
+        [
+            "Can you tell me my credit rating?",
+            "credit_score"
+        ]
+    ],
+    "oos_train": [
+        [
+            "How do I bake a chocolate cake?",
+            "oos"
+        ],
+        [
+            "What\u2019s the tallest building in the world?",
+            "oos"
+        ],
+        [
+            "Tell me a fun fact.",
+            "oos"
+        ],
+        [
+            "Who was the first president of the United States?",
+            "oos"
+        ],
+        [
+            "What is the speed of light?",
+            "oos"
+        ]
+    ],
+    "oos_val": [
+        [
+            "How do I bake a chocolate cake?",
+            "oos"
+        ]
+    ],
+    "oos_test": [
+        [
+            "How tall is Mount Everest?",
+            "oos"
+        ]
+    ]
+}

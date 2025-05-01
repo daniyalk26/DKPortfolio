@@ -1,0 +1,29 @@
+
+Redis Notes
+
+Introduction to Redis and NoSQL:
+- Redis: Open-source, in-memory data store (key-value NoSQL database).
+- Used for caching, real-time analytics, session storage, primary database.
+
+Types of NoSQL:
+- Key-Value: Redis, DynamoDB
+- Document: MongoDB, CouchDB
+- Column-Family: Cassandra, HBase
+- Graph: Neo4j, ArangoDB
+
+Redis Features:
+- In-memory (microsecond latency)
+- Data Structures: Strings, Lists, Sets, Hashes, Sorted Sets, Bitmaps, HyperLogLogs, Streams
+- Use Cases: Caching, Session management, Message queuing, Real-time analytics
+
+Redis and Python:
+- redis-py library
+- Basic commands: SET, GET, INCR, RPUSH, LRANGE, HSET, HGETALL, pipelines
+
+Redis Real-World Uses:
+- Caching, Session Management, Pub/Sub, Leaderboards, Real-Time Analytics, ML feature store
+
+Redis Architecture & Scaling:
+- Master-Slave Replication, Sentinel (automatic failover), Cluster (horizontal scaling)
+- Persistence: Snapshots (RDB), Append-Only File (AOF)
+

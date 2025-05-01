@@ -1,0 +1,26 @@
+# Python
+__pycache__/
+*.py[cod]
+.Python
+env/
+venv/
+.venv/
+*.egg-info/
+.mypy_cache/
+.pytest_cache/
+# Streamlit
+.streamlit/config.toml
+# VSCode
+.vscode/
+# macOS
+.DS_Store
+# Logs
+*.log
+# Environment & credentials
+.env
+*.pem
+credentials.json
+# AWS SAM/Cloudformation artifacts
+.aws-sam/
+# Jupyter notebooks checkpoints
+.ipynb_checkpoints/

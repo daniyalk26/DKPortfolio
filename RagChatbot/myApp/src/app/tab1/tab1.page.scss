@@ -1,0 +1,195 @@
+ion-header {
+    --background: var(--ion-color-primary);
+    --color: var(--ion-color-light);
+  }
+  
+  ion-content {
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 100px; /* Adjust to make room for input bar and preset buttons */
+  }
+  
+  .chat-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 16px;
+    padding-bottom: 110px;
+    overflow-y: scroll;
+  }
+  
+  .chat-box {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 8px;
+  }
+  
+  .chat-message {
+    padding: 10px 15px;
+    border-radius: 12px;
+    margin-bottom: 8px;
+    font-size: 16px;
+    line-height: 1.4;
+    word-break: break-word;
+    max-width: 70%;
+  }
+  
+  .bot-message {
+    align-self: flex-start;
+    color: var(--ion-color-dark);
+    max-width: 100%;
+  }
+  
+  .user-message {
+    align-self: flex-end;
+    background-color: var(--ion-color-light);
+    color: var(--ion-color-dark);
+    // border: 1px solid var(--ion-color-medium);
+  }
+  
+  .fixed-bottom {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background-color: var(--ion-color-light);
+    box-shadow: 0 -1px 3px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+  }
+  
+  .preset-container {
+    position: absolute;
+    bottom: 80px; /* Position above the input bar */
+    width: 100%;
+    display: flex;
+    justify-content: left;
+    margin-right: 50px;
+    z-index: 999;
+    overflow-x: scroll;
+  }
+  
+  .preset-buttons {
+    display: flex;
+    flex-wrap: no-wrap;
+    padding: 10px;
+    justify-content: center;
+  }
+  
+  .input-bar {
+    background-color: var(--ion-color-light);
+  }
+  
+  .input-container {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+  }
+  
+  .input-container ion-input {
+    flex: 1;
+    margin-right: 8px;
+    color: var(--ion-color-dark); /* Input text color set to black */
+  }
+  
+  .input-container ion-button {
+    --background: var(--ion-color-primary);
+    --color: var(--ion-color-light);
+  }
+
+  .btn-toolbar {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    overflow-y: hidden;
+    white-space: nowrap;
+  }
+
+  .mic-button-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+  
+  .mic-button-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+    padding: 2px; /* Thickness of the gradient border */
+    background: linear-gradient(45deg, transparent, transparent); /* Initially transparent */
+    background-size: 400% 400%;
+    transition: background 0.3s ease;
+    z-index: 0;
+  }
+  
+  .mic-button-container.recording::before {
+    background: linear-gradient(45deg, #0ff, rgb(82, 221, 221), rgb(179, 240, 240), rgb(250, 250, 244), rgb(82, 221, 221), #0ff); /* Gradient starts and ends with blue */
+    background-size: 300% 300%;
+    animation: gradientMove 5s linear infinite;
+  }
+  
+  @keyframes gradientMove {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+  
+  .mic-button-container ion-button {
+    position: relative;
+    z-index: 1;
+    border-radius: 5px;
+  }
+
+  ion-toolbar {
+    position: relative;
+  }
+  
+  ion-buttons[slot="primary"] {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  
+  .mic-button-container {
+    position: relative;
+    margin-left: 10px; /* Adjust spacing if needed */
+  }
+  
+  .mic-button {
+    font-size: 32px; /* Make the mic icon larger */
+    color: white;
+    background-color: #007bff;
+    border-radius: 50%;
+    box-shadow: 0px 0px 10px 2px rgba(0, 123, 255, 0.8);
+    transition: box-shadow 0.3s ease;
+  }
+  
+  .mic-button-container.recording .mic-button {
+    box-shadow: 0px 0px 20px 4px rgba(0, 123, 255, 1);
+  }
+  
+  .mic-top-button {
+    font-size: 24px;
+    color: #007bff;
+    margin-left: auto; /* Move it to the right */
+    margin-right: 10px;
+  }
+  
+  .mic-button ion-icon {
+    font-size: 1.5em;
+  }
+  
+  .mic-top-button ion-icon {
+    font-size: 2em;
+  }
+  
+  

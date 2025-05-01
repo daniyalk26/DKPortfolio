@@ -1,0 +1,65 @@
+BSTs
+
+Binary Search Trees (BSTs) 
+1. Definition of a BST 
+
+● A BST is a binary tree with the BST-property: 
+   ● If y is in the left subtree of x, then key[y] < key[x] 
+   ● If y is in the right subtree of x, then key[y] > key[x] 
+   ● Assumption: All keys in a BST are distinct. 
+
+● Node attributes: 
+   ● p → parent 
+   ● left → left child 
+   ● right → right child 
+   ● key → value stored at the node 
+
+2. Tree Traversal Methods 
+Traversal = visiting all nodes in a specific order. Three types: 
+1. Inorder (LNR): left subtree → current node → right subtree 
+2. Preorder (NLR): current node → left subtree → right subtree 
+3. Postorder (LRN): left subtree → right subtree → current node 
+
+Inorder traversal of BST always results in sorted order! 
+
+3. Operations on BSTs 
+A. Searching for a Key 
+   ● Use BST property to search efficiently 
+   ● If the current node contains the key → found! 
+   ● If the key is smaller than the current node’s key → search left subtree. 
+   ● If the key is larger than the current node’s key → search right subtree. 
+   ● Worst-case time complexity: O(h), where h = height of the tree 
+
+B. Finding Minimum & Maximum 
+   ● Minimum: Go left until there is no left child. 
+   ● Maximum: Go right until there is no right child. 
+
+C. Insertion 
+   ● Find the correct position where the new node fits without breaking the BST-property. 
+   ● Move left if the new key is smaller, move right if it is larger. 
+   ● Insert the new node in the appropriate location. 
+
+D. Finding Successor & Predecessor 
+   ● Successor (next largest key): 
+      1. If the node has a right child, find the minimum in its right subtree. 
+      2. Otherwise, follow parent pointers upward until coming from a left child. 
+
+   ● Predecessor (next smallest key) is symmetric. 
+
+E. Deletion 
+   ● Three cases: 
+      1. No children → Remove the node. 
+      2. One child → Replace the node with its child. 
+      3. Two children: 
+         ● Find successor of the node. 
+         ● Replace the node with its successor. 
+         ● Handle the successor’s removal using case 1 or 2. 
+
+4. Efficiency Analysis 
+Theorem: On a BST of height h, the operations: 
+   ● Search 
+   ● Minimum/Maximum 
+   ● Successor/Predecessor 
+   ● Insert 
+   ● Delete 
+→ all run in O(h) time.

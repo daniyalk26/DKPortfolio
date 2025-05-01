@@ -1,0 +1,58 @@
+AVLs
+
+Why We Must Care About Binary Search Tree Balancing 
+● BST Performance Varies by Shape: The height of a binary search tree (BST) is the key factor in 
+its efficiency. 
+
+● Extreme Cases: 
+○ Perfect Binary Tree: Balanced with minimal height. 
+○ Degenerate Tree: Unbalanced, behaving like a linked list, leading to poor performance. 
+
+● Issues with Degenerate Trees: 
+○ Lookups take O(n) time in the worst case. 
+○ Recursive lookups may use O(n) memory (stack space). 
+○ Building a degenerate BST with n keys takes O(n²) time. 
+
+Aiming for Perfection 
+● Perfect Trees: Maintain ideal balance but are not possible for all tree sizes. 
+● Complete Binary Trees: 
+   ○ A more relaxed version of “perfection.” 
+   ○ Guarantees a logarithmic height but is difficult to maintain dynamically. 
+
+● Problem with Maintaining Completeness: 
+   ○ Inserting nodes while keeping completeness requires Ω(n) operations in the worst case, 
+making it impractical. 
+
+What is a “Good” Balance Condition? 
+● A balance condition should: 
+   ○ Keep height O(log n). 
+   ○ Ensure that rebalancing after insertions/removals takes O(log n). 
+
+AVL Trees: A Compromise 
+● AVL trees are “nearly balanced” BSTs that maintain logarithmic height with an efficient 
+balancing strategy. 
+
+● AVL Property: The height difference between left and right subtrees of any node is at most 1. 
+● AVL trees require constant-time rebalancing via rotations. 
+
+Rotations (Tree Rebalancing) 
+● Single Rotations: 
+   ○ LL Rotation: Right rotation to fix left-heavy imbalance. 
+   ○ RR Rotation: Left rotation to fix right-heavy imbalance.  
+
+● Double Rotations: 
+   ○ LR Rotation: Left rotation followed by right rotation. 
+   ○ RL Rotation: Right rotation followed by left rotation. 
+
+● Each rotation runs in O(1) time since it only requires a constant number of pointer updates. 
+
+Insertion Algorithm 
+1. Insert as in a normal BST. 
+2. Check the AVL property from the inserted node upwards. 
+3. If imbalance is found, perform one of LL, RR, LR, or RL rotations. 
+4. Rotations restore balance in O(1) time, ensuring that insertions remain O(log n). 
+
+Removal Algorithm 
+● Similar to insertion but more complex: 
+   ○ Requires checking the AVL property up the tree after deletion. 
+   ○ May need multiple rotations (but still O(log n) in total).

@@ -1,0 +1,64 @@
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Payactiv Copilot (Prototype)</ion-title>
+    
+    <!-- Conditionally show the mic icon in the top right -->
+    <ion-buttons slot="end" *ngIf="isRecording">
+      <ion-button class="mic-top-button">
+        <ion-icon name="mic" slot="icon-only"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <!-- <ion-buttons slot="end">
+      <ion-button (click)="saveConversation()">
+        <ion-icon name="save-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons> -->
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content [fullscreen]="true">
+  <!-- Optional: Keep or remove the collapsible header depending on your design needs -->
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Chatbot</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <!-- Chatbot Container -->
+  <div class="chat-container" #chatContainer>
+    <div class="chat-box" *ngFor="let message of conversation">
+      <div class="chat-message" [ngClass]="{'user-message': message.speaker === 'User', 'bot-message': message.speaker === 'Bot'}">
+        <p>{{ message.text }}</p>
+      </div>
+    </div>
+  </div>
+</ion-content>
+
+<!-- Preset Conversations Container -->
+<div class="preset-container">
+  <div class="preset-buttons">
+    <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+      <div class="btn-group mr-2" role="group" aria-label="First group" *ngFor="let preset of presetConversations">
+        <button class="btn btn-outline-primary rounded-pill" (click)="loadPresetConversation(preset)">
+          {{ preset.title }}
+        </button>
+      </div>
+    </div>  
+  </div>
+</div>
+
+<div class="fixed-bottom input-bar">
+  <div class="input-container">
+    <ion-input [(ngModel)]="writtenText" placeholder="Type a message..." clearInput (keyup.enter)="sendMessage()"></ion-input>
+    <ion-button type="submit" (click)="sendMessage()">Send</ion-button>
+    <div class="mic-button-container" [ngClass]="{'recording': isRecording}">
+      <ion-button (click)="toggleListening()">
+        <ion-icon [name]="isRecording ? 'mic-off' : 'mic'"></ion-icon>
+      </ion-button>
+    </div>
+  </div>
+</div>
+

@@ -1,0 +1,45 @@
+B+ Trees
+
+B+ Trees Summary 
+Introduction 
+
+● B+Trees are designed to improve locality in search trees by grouping multiple elements into large 
+nodes. 
+
+● Originally created for disk storage, they remain useful for in-memory data structures as memory 
+speed is slow compared to processors. 
+
+● High branching factor minimizes disk reads. 
+Structure and Properties 
+
+● A B-Tree of order m means: 
+○ Non-leaf nodes have up to m children. 
+○ Leaves store actual data elements, while non-leaf nodes store keys. 
+
+● Key Properties: 
+1. All paths from the root to a leaf have the same length. 
+2. A node with n children has n-1 keys. 
+3. Each node (except the root) is at least half full. 
+4. A subtree contains keys between those of the parent node. 
+5. If not a leaf, the root must have at least two children. 
+
+Performance and Optimization 
+● Search time: O(log n), with good constant factors due to controlled tree height. 
+● The value of m is chosen to optimize cache performance or disk block reads. 
+
+Operations 
+1. Search: 
+   a. Linear or binary search within a node. 
+   b. Follow appropriate child pointer. 
+
+2. Insertion: 
+   a. Insert into a leaf if space is available. 
+   b. If full, split the node and push a key up. 
+   c. If the parent is also full, splitting propagates up to the root. 
+   d. May increase tree height if the root splits. 
+
+3. Deletion: 
+   a. Remove the key from the leaf. 
+   b. If the leaf is underfilled, redistribute keys with a sibling. 
+   c. If redistribution fails, merge nodes, potentially propagating changes up. 
+   d. If the root has only two children and they merge, the root is deleted, reducing tree height.

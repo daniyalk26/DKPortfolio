@@ -1,0 +1,64 @@
+
+MongoDB Aggregation and Document Notes
+
+--- Aggregation Pipeline ---
+- An aggregation pipeline consists of stages processing documents sequentially.
+- Stages can filter, group, and calculate document values.
+- Aggregation results can include grouped document calculations like total, average, max, and min.
+- MongoDB provides optimizations, automatically rearranging stages for performance (e.g., pushing $match before $sort).
+
+--- Aggregation Examples ---
+- Count total orders:
+db.orders.aggregate([{ $group: { _id: null, count: { $sum: 1 } } }])
+
+- Sum prices by customer:
+db.orders.aggregate([{ $group: { _id: "$cust_id", total: { $sum: "$price" } } }])
+
+- Filter and aggregate by conditions:
+db.orders.aggregate([
+    { $match: { status: 'A' } },
+    { $group: { _id: "$cust_id", total: { $sum: "$price" } } },
+    { $match: { total: { $gt: 250 } } }
+])
+
+--- Aggregation Pipeline Optimizations ---
+- Projection Optimization: pipeline only passes necessary fields.
+- Sequence Optimizations: MongoDB rearranges pipeline for efficiency ($match, $sort, $limit).
+- Coalescence Optimization: merges adjacent compatible stages ($sort+$limit, $skip+$skip, $match+$match).
+- Indexes greatly enhance aggregation performance.
+
+--- Aggregation Pipeline Limits ---
+- Document size limit: 16MB.
+- Maximum stages: 1000 per pipeline.
+- Memory limit: 100MB per stage; temporary files written if exceeded (when allowDiskUse: true).
+
+--- Aggregation Zip Code Example ---
+- Aggregation to group states by population:
+db.zipcodes.aggregate([
+    { $group: { _id: "$state", totalPop: { $sum: "$pop" } } },
+    { $match: { totalPop: { $gte: 10*1000*1000 } } }
+])
+
+--- SQL to MongoDB Aggregation Mapping ---
+- SQL WHERE -> MongoDB $match
+- SQL GROUP BY -> MongoDB $group
+- SQL HAVING -> MongoDB $match (after $group)
+- SQL ORDER BY -> MongoDB $sort
+- SQL LIMIT -> MongoDB $limit
+- SQL JOIN -> MongoDB $lookup
+
+--- Documents in MongoDB ---
+- BSON (binary JSON) documents store MongoDB data.
+- BSON supports various data types beyond JSON.
+- Document structure: field-value pairs.
+- "_id" field uniquely identifies documents.
+- Field names: no null characters, restrictions on "$" and "." characters.
+- MongoDB supports arrays and embedded documents using dot notation.
+- Document size limited to 16MB; larger documents use GridFS.
+
+--- Field Paths ---
+- Access nested fields and arrays using dot notation.
+- Examples:
+  Nested fields: "$field.nestedField"
+  Array fields: "$arrayField.subField"
+

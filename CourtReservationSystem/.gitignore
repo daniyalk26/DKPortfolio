@@ -1,0 +1,14 @@
+# C/C++
+*.o
+*.a
+*.so
+*.exe
+*.out
+build/
+bin/
+# IDE
+.vscode/
+.idea/
+# Mac / Windows
+.DS_Store
+Thumbs.db

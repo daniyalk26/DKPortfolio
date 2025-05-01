@@ -1,0 +1,8 @@
+.angular/
+.vscode/
+node_modules/
+www/
+venv/
+*.env
+.env
+ios/

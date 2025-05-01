@@ -1,0 +1,210 @@
+import json
+import random
+
+def create_large_synthetic_dataset():
+    classes = [
+        "balance",
+        "transactions",
+        "transfer",
+        "card",
+        "about_payactiv",
+        "oos",
+        "weather",
+        "credit_score"
+    ]
+    
+    data_samples = {
+        'balance': [
+            'How much do I have in savings?',
+            'What is the balance of my checking account?',
+            'Can you check my current balance?',
+            'Tell me the amount available in my account.',
+            'What’s left in my account after the last transaction?',
+            'What is my account balance as of today?',
+            'How much money do I have in my savings after the recent deposit?',
+            'What is the available balance in my savings account?',
+            'Can you provide me with my account balance details?',
+            'How much money is currently in my checking account?',
+            'What is the balance of my investment account?',
+            'How much do I have in my joint account?',
+            'What’s my balance after the last withdrawal?',
+            'Can you tell me my account balance as of yesterday?',
+            'How much is available in my overdraft protection account?'
+        ],
+        'transactions': [
+            'Show me my last five transactions.',
+            'Can you tell me where I spent $10?',
+            'List all transactions from last month.',
+            'How much did I spend on my credit card?',
+            'What was the last purchase made with my card?',
+            'Can you provide a summary of my recent transactions?',
+            'Show me the transactions made in the past week.',
+            'How much did I spend at the grocery store last month?',
+            'What were my top expenses for this month?',
+            'Can you find the payment I made to XYZ company?',
+            'What was the amount of my last direct deposit?',
+            'Can you list all my ATM withdrawals?',
+            'How much did I spend on dining out last month?',
+            'Show me the transactions categorized under entertainment.',
+            'What were my highest expenses this year?'
+        ],
+        'transfer': [
+            'Move $50 to my savings.',
+            'Can I transfer $30 to my checking account?',
+            'Transfer $100 to my friend’s account.',
+            'Send $200 to my BOA card.',
+            'I need to transfer $300 to my other bank account.',
+            'Can you transfer $500 to my savings account?',
+            'Move $20 to my emergency fund.',
+            'Transfer $1000 to my spouse\'s account.',
+            'Send $50 to my PayPal account.',
+            'Can you transfer $250 to my business account?',
+            'Send $400 to my mortgage account.',
+            'Can you transfer $150 to my brokerage account?',
+            'Move $75 to my holiday fund.',
+            'Transfer $200 to my travel account.',
+            'Send $300 to my credit card account.'
+        ],
+        'card': [
+            'Is my card ending in 4321 active?',
+            'Has my card ending in 8765 expired?',
+            'Is my card ending in 2109 blocked?',
+            'Activate my new card.',
+            'How can I block my lost card?',
+            'Can you check if my card ending in 5678 is valid?',
+            'What is the status of my replacement card?',
+            'Is my card ending in 1234 due for renewal?',
+            'How do I set up a PIN for my new card?',
+            'Can you provide me with the expiry date of my card?',
+            'How do I request a new debit card?',
+            'Is my card contactless enabled?',
+            'Can you tell me the credit limit of my card?',
+            'Has my recent card transaction been processed?',
+            'What is the status of my card delivery?'
+        ],
+        'support': [
+            'I need help with my account.',
+            'What is the email for customer support?',
+            'How can I speak with a representative?',
+            'Can I get support through the app?',
+            'I want to file a complaint.',
+            'Can you guide me on how to reset my password?',
+            'How do I change my account details?',
+            'What is the phone number for customer service?',
+            'Can I chat with support online?',
+            'How do I close my account?',
+            'How can I report fraudulent activity?',
+            'What is the procedure for disputing a transaction?',
+            'How do I update my contact information?',
+            'Can you help me with my account settings?',
+            'Where can I find the FAQs section?'
+        ],
+        'about_payactiv': [
+            'What is PayActiv’s mission?',
+            'Tell me about PayActiv’s services.',
+            'Where can I read more about PayActiv?',
+            'What are the benefits of using PayActiv?',
+            'Is PayActiv safe to use?',
+            'How does PayActiv work?',
+            'What makes PayActiv different from other financial services?',
+            'Can you explain the fees associated with PayActiv?',
+            'How long has PayActiv been in operation?',
+            'Who are the founders of PayActiv?',
+            'What are the core values of PayActiv?',
+            'How can PayActiv help me manage my finances?',
+            'What security measures does PayActiv have in place?',
+            'Can you tell me about PayActiv’s partnerships?',
+            'How does PayActiv support financial wellness?'
+        ],
+        'weather': [
+            "What's the weather like today?",
+            "Can you tell me the current weather?",
+            "Is it going to rain today?",
+            "How's the weather looking right now?",
+            "What's the temperature outside?",
+            "Do I need an umbrella today?",
+            "Is it sunny outside?",
+            "What's the forecast for today?",
+            "Is it going to be cold today?",
+            "How hot is it going to be today?",
+            "What’s the weather for the weekend?",
+            "Will it be windy today?",
+            "Should I wear a jacket today?",
+            "What’s the weather like tomorrow?",
+            "Is there a chance of snow today?"
+        ],
+        'credit_score': [
+            "Can you check my credit score?",
+            "What's my current credit score?",
+            "How’s my credit score looking?",
+            "Can you tell me my credit rating?",
+            "I need to know my credit score.",
+            "What’s my credit score as of today?",
+            "How’s my credit report doing?",
+            "Check my credit score for me.",
+            "What’s the status of my credit score?",
+            "Can you update me on my credit score?",
+            "I’d like to see my credit score.",
+            "What’s my latest credit score?",
+            "Can you tell me if my credit score has changed?",
+            "What’s the current status of my credit score?",
+            "Can you pull up my credit score?"
+        ],
+        'oos': [
+            'What’s the capital of France?',
+            'How tall is Mount Everest?',
+            'Tell me a fun fact.',
+            'What’s the population of New York?',
+            'How many continents are there?',
+            'What is the distance between Earth and the Moon?',
+            'Who won the World Series last year?',
+            'How do I bake a chocolate cake?',
+            'What’s the tallest building in the world?',
+            'What is the speed of light?',
+            'Who was the first president of the United States?',
+            'What is the largest ocean on Earth?',
+            'How many countries are in Africa?',
+            'What is the boiling point of water?',
+            'Who is the prime minister of India?'
+        ]
+    }
+    
+    # Function to generate data for each category
+    def generate_data(category, num_samples):
+        return [[random.choice(data_samples[category]), category] for _ in range(num_samples)]
+    
+    # Generate data
+    num_samples_per_class = 10
+    data = {class_name: generate_data(class_name, num_samples_per_class) for class_name in classes}
+    
+    # Split the data into train, val, and test sets
+    def split_data(data, train_ratio=0.7, val_ratio=0.2):
+        random.shuffle(data)
+        train_size = int(len(data) * train_ratio)
+        val_size = int(len(data) * val_ratio)
+        train_data = data[:train_size]
+        val_data = data[train_size:train_size + val_size]
+        test_data = data[train_size + val_size:]
+        return train_data, val_data, test_data
+    
+    train_data, val_data, test_data = [], [], []
+    for class_name in classes:
+        train, val, test = split_data(data[class_name])
+        train_data.extend(train)
+        val_data.extend(val)
+        test_data.extend(test)
+    
+    dataset = {
+        "train": train_data,
+        "val": val_data,
+        "test": test_data,
+        "oos_train": generate_data("oos", num_samples_per_class // 2),
+        "oos_val": generate_data("oos", num_samples_per_class // 10),
+        "oos_test": generate_data("oos", num_samples_per_class // 10)
+    }
+    
+    # Save the dataset as a JSON file
+    with open('new_synthetic_data.json', 'w') as file:
+        json.dump(dataset, file, indent=4)
+
+create_large_synthetic_dataset()
